@@ -41,6 +41,9 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
         }
 
         if (matched.empty()) {
+            if (lastPrintedHadMatch) {
+            cout << '\n';
+        }
             cout << "No movies found with prefix " << prefix << endl;
         lastPrintedHadMatch = false;
 
@@ -60,10 +63,6 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
         }
     }
 
-    
-    if (!foundPrefixes.empty()) {
-        cout << '\n';
-    }
     
 
         /*if (!matched.empty() && i < prefixes.size() - 1) {
