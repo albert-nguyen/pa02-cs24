@@ -37,17 +37,35 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
             ++it;
         }
 
-        if (matched.empty()) {
+        /*if (matched.empty()) {
             cout << "No movies found with prefix " << prefix << endl;
         } else {
             sort(matched.begin(), matched.end());
             for (const Movie& m : matched) {
                 cout << m.name << ", " << fixed << setprecision(1) << m.rating << endl;
             }
-            cout << endl;
+            cout << '\n';
             bestMovies[prefix] = matched[0];
             foundPrefixes.push_back(prefix);
         }
+        */
+
+        if (matched.empty()) {
+            cout << "No movies found with prefix " << prefix << endl;
+        } else {
+            // Add newline before this group, but only if it's not the first output group
+            if (!foundPrefixes.empty()) {
+                cout << '\n';
+            }
+            sort(matched.begin(), matched.end());
+            for (const Movie& m : matched) {
+                cout << m.name << ", " << fixed << setprecision(1) << m.rating << endl;
+            }
+            bestMovies[prefix] = matched[0];
+            foundPrefixes.push_back(prefix);
+        }
+       
+
 
         if (!matched.empty() && i < prefixes.size() - 1) {
             auto nextPrefix = prefixes[i + 1];
