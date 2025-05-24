@@ -49,30 +49,18 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
 
         } else {
             if (lastPrintedHadMatch) {
-                cout << '\n';  // print blank line before new match group (but not the first)
+                cout << '\n';  
             }
             sort(matched.begin(), matched.end());
             for (const Movie& m : matched) {
                 cout << m.name << ", " << fixed << setprecision(1) << m.rating << endl;
             }
-            //cout << '\n';
             bestMovies[prefix] = matched[0];
             foundPrefixes.push_back(prefix);
             lastPrintedHadMatch = true;
 
         }
     }
-
-    
-
-        /*if (!matched.empty() && i < prefixes.size() - 1) {
-            auto nextPrefix = prefixes[i + 1];
-            auto nextIt = movieMap.lower_bound(nextPrefix);
-            if (nextIt != movieMap.end() && nextIt->first.find(nextPrefix) == 0) {
-                cout << '\n';
-            }
-        }
-    }*/
 
     for (const string& prefix : foundPrefixes) {
         const Movie& best = bestMovies[prefix];
