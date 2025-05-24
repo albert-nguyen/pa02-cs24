@@ -27,7 +27,7 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
     map<string, Movie> bestMovies;
     vector<string> foundPrefixes;  
 
-    /*for (size_t i = 0; i < prefixes.size(); ++i) {
+    for (size_t i = 0; i < prefixes.size(); ++i) {
         const string& prefix = prefixes[i];
         vector<Movie> matched;
 
@@ -37,7 +37,7 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
             ++it;
         }
 
-        /*if (matched.empty()) {
+        if (matched.empty()) {
             cout << "No movies found with prefix " << prefix << endl;
         } else {
             sort(matched.begin(), matched.end());
@@ -48,34 +48,7 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
             bestMovies[prefix] = matched[0];
             foundPrefixes.push_back(prefix);
         }
-        */
-
-        bool hasPrintedMatch = false;
-
-        for (const string& prefix : prefixes) {
-            vector<Movie> matched;
-            auto it = movieMap.lower_bound(prefix);
-            while (it != movieMap.end() && it->first.find(prefix) == 0) {
-                matched.push_back(it->second);
-                ++it;
-            }
-
-            if (matched.empty()) {
-                cout << "No movies found with prefix " << prefix << endl;
-            } else {
-                if (hasPrintedMatch) cout << '\n'; // newline only between groups
-                sort(matched.begin(), matched.end());
-                for (const Movie& m : matched) {
-                    cout << m.name << ", " << fixed << setprecision(1) << m.rating << endl;
-                }
-                bestMovies[prefix] = matched[0];
-                foundPrefixes.push_back(prefix);
-                hasPrintedMatch = true;
-            }
-        }
-        
-            
-
+    
 
         if (!matched.empty() && i < prefixes.size() - 1) {
             auto nextPrefix = prefixes[i + 1];
