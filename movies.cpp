@@ -44,7 +44,6 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
             for (const Movie& m : matched) {
                 cout << m.name << ", " << fixed << setprecision(1) << m.rating << endl;
             }
-            cout << endl;
             bestMovies[prefix] = matched[0];
             foundPrefixes.push_back(prefix);
         }
@@ -53,10 +52,13 @@ void processPrefixes(const map<string, Movie>& movieMap, const vector<string>& p
             auto nextPrefix = prefixes[i + 1];
             auto nextIt = movieMap.lower_bound(nextPrefix);
             if (nextIt != movieMap.end() && nextIt->first.find(nextPrefix) == 0) {
-                cout << endl;
+                cout << '\n';
             }
         }
     }
+
+    cout << endl;
+
 
     for (const string& prefix : foundPrefixes) {
         const Movie& best = bestMovies[prefix];
