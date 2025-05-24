@@ -50,14 +50,14 @@ int main(int argc, char** argv) {
     }
     prefixFile.close();
 
-    auto start = std::chrono::high_resolution_clock::now();
+    //auto start = std::chrono::high_resolution_clock::now();
 
     processPrefixes(movieMap, prefixes);
 
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> duration = end - start;
+    //auto end = std::chrono::high_resolution_clock::now();
+    //std::chrono::duration<double, std::milli> duration = end - start;
 
-    std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
+    //std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
 
     return 0;
 }
